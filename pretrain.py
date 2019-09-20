@@ -321,6 +321,9 @@ def main():
     if args.loss_scale != 1 and args.dynamic_loss_scale:
         raise RuntimeError("Static loss scale and dynamic loss scale cannot be used together.")
 
+    plutchik_cols = ['anger', 'anticipation', 'disgust', 'fear', 'joy', 'sadness', 'surprise', 'trust']
+    args.non_binary_cols = plutchik_cols
+
     (train_data, val_data, test_data), tokenizer = data_config.apply(args)
 
     args.data_size = tokenizer.num_tokens
